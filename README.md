@@ -1,36 +1,16 @@
 # Brainly-Front-end
 
-This project uses:
+This is the frontend of the **Brainly** project — built using **React**, **TypeScript**, and **Vite**. It provides a fast, modern, and scalable interface with responsive design and interactive UI components.
 
-## React + TypeScript + Vite
+## 🚀 Tech Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **React** – for building user interfaces
+- **TypeScript** – static type checking for better code quality
+- **Vite** – fast development server and build tool
+- **Tailwind CSS** – utility-first CSS framework 
+- **React Router** – for client-side routing 
+- **Axios** – for HTTP requests '
+- I have also tried to create my custom components and used icons with the help of Heroicons library provided by Tailwind !
+- FEEL FREE TO CONTRIBUTE ! <3
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
