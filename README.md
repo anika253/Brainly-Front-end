@@ -9,7 +9,8 @@ This is the frontend of the **Brainly** project — built using **React**, **Typ
 - **Vite** – fast development server and build tool
 - **Tailwind CSS** – utility-first CSS framework 
 - **React Router** – for client-side routing 
-- **Axios** – for HTTP requests '
+- **Axios** – for HTTP requests and express as part of backend
+- 
 - I have also tried to create my custom components and used icons with the help of Heroicons library provided by Tailwind !
 - FEEL FREE TO CONTRIBUTE ! <3
 
