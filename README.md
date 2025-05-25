@@ -5,7 +5,7 @@ This is the frontend of the **Brainly** project — built using **React**, **Typ
 ## 🚀 Tech Stack
 
 - **React** – for building user interfaces
-- **TypeScript** – static type checking for better code quality
+- **TypeScript** – static type checking for better and error-free code quality 
 - **Vite** – fast development server and build tool
 - **Tailwind CSS** – utility-first CSS framework 
 - **React Router** – for client-side routing 
