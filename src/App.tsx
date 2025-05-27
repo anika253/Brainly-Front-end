@@ -17,7 +17,10 @@ function App() {
         text="Share Brain"
         startIcon={<ShareIcon />}
       ></Button>
-      <Card />
+      <Card
+        type="twitter"
+        link="https://twitter.com/kirat_tw/status/1633685473821425666"
+      />
     </div>
   );
 }
