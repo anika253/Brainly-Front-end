@@ -3,10 +3,12 @@ import { Button } from "./components/Button";
 import { PlusIcon } from "./components/icons/PlusIcon";
 import { ShareIcon } from "./components/icons/ShareIcon";
 import { Card } from "./components/Card";
+import { CreateContentModal } from "./components/CreateContentModal";
 
 function App() {
   return (
     <div className="p-4 space-y-6">
+      <CreateContentModal open={true} />
       {/* Top Buttons */}
       <div className="flex justify-end gap-4">
         <Button variant="primary" text="Add Content" startIcon={<PlusIcon />} />
