@@ -11,6 +11,10 @@ export function CreateContentModal({ open, onClose }) {
           <div className="flex-col justify-center">
             <span className="bg-white opacity-100 p-4 rounded">
               <div className="flex justify-end">
+                <div
+                  onClick={onClose}
+                  className="cursor-pointer hover:bg-gray-200 rounded-full p-1 transition-all duration-200 ease-in-out"
+                ></div>
                 <CrossIcon />
               </div>
               <div>
