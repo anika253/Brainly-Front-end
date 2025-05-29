@@ -1,3 +1,4 @@
+// components/Card.tsx
 import { ShareIcon } from "./icons/ShareIcon";
 
 interface CardProps {
@@ -8,43 +9,31 @@ interface CardProps {
 
 export function Card({ link, type, title }: CardProps) {
   return (
-    <div
-      className="bg-white border border-gray-200 rounded-md max-w-md w-full shadow-sm p-4
-    min-h-48 min-w-72"
-    >
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-md font-semibold text-gray-800">{title}</h2>
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-500 hover:text-gray-700"
-        >
-          <ShareIcon />
+    <article className="w-full max-w-md bg-white rounded-lg border border-gray-200 shadow">
+      <header className="p-4 flex justify-between items-center border-b">
+        <h3 className="font-medium text-gray-900 truncate">{title}</h3>
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <ShareIcon className="w-5 h-5 text-gray-500 hover:text-gray-700" />
         </a>
-      </div>
+      </header>
 
-      <div className="w-full">
+      <div className="p-4">
         {type === "youtube" && (
-          <div className="aspect-w-16 aspect-h-9">
+          <div className="aspect-video">
             <iframe
               src={link.replace("watch?v=", "embed/")}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
+              className="w-full h-full rounded"
               allowFullScreen
-              className="w-full h-60 rounded"
-            ></iframe>
+            />
           </div>
         )}
 
         {type === "twitter" && (
           <blockquote className="twitter-tweet w-full">
-            <a href={link.replace("x.com", "twitter.com")}></a>
+            <a href={link}></a>
           </blockquote>
         )}
       </div>
-    </div>
+    </article>
   );
 }

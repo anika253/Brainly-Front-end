@@ -7,9 +7,13 @@ interface SidebarItemProps {
 
 export function SidebarItem({ text, icon }: SidebarItemProps) {
   return (
-    <div className="flex items-center space-x-2">
-      {icon}
-      {text}
-    </div>
+    <button
+      className="group flex w-full items-center gap-3
+                 rounded-md px-3 py-2 text-left
+                 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+    >
+      <span className="shrink-0">{icon}</span>
+      <span className="truncate">{text}</span>
+    </button>
   );
 }

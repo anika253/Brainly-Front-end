@@ -1,49 +1,28 @@
-import "./App.css";
-import React, { useState } from "react";
-import { Button } from "./components/Button";
-import { PlusIcon } from "./components/icons/PlusIcon";
-import { ShareIcon } from "./components/icons/ShareIcon";
+// App.tsx
+import { useEffect } from "react";
 import { Card } from "./components/Card";
-import { CreateContentModal } from "./components/CreateContentModal";
 import { Sidebar } from "./components/Sidebar";
-const [modalOpen, setModalOpen] = useState(false);
 
 function App() {
+  /* load the twitter widget once */
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Sidebar />
 
-      <div
-        className="p-4 ml-72
-          min-h-screen
-        bg-gray-100
-        border-2
-
-      "
-      >
-        <CreateContentModal
-          open={modalOpen}
-          onClose={() => {
-            setModalOpen(false);
-          }}
-        />
-        {/* Top Buttons */}
-        <div className="flex justify-end gap-4">
-          <Button
-            onClick={() => setModalOpen(true)}
-            variant="primary"
-            text="Add Content"
-            startIcon={<PlusIcon />}
-          />
-          <Button
-            variant="secondary"
-            text="Share Brain"
-            startIcon={<ShareIcon />}
-          />
-        </div>
-
-        {/* Cards Section */}
-        <div className="flex flex-wrap gap-4">
+      {/* 18 rem sidebar  +  1 rem gap  =>  ml-[19rem]  */}
+      <main className="ml-[19rem] p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card
             title="First Tweet"
             type="twitter"
@@ -55,7 +34,7 @@ function App() {
             link="https://www.youtube.com/watch?v=9bZkp7q19f0"
           />
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -20,7 +20,7 @@ export function Button({ variant, text, startIcon, onClick }: ButtonProps) {
       className={variantClasses[variant] + "" + defaultstyles}
     >
       <div
-        className="pr-2 pl-2 pr-2
+        className="pr-2 pl-2
       "
       >
         {startIcon}

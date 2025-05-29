@@ -1,9 +1,12 @@
-import { useState } from "react";
 import { CrossIcon } from "./icons/CrossIcon";
 import { Button } from "./Button";
 
-// controlled component
-export function CreateContentModal({ open, onClose }) {
+interface CreateContentModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
   return (
     <div>
       {open && (
@@ -14,16 +17,16 @@ export function CreateContentModal({ open, onClose }) {
                 <div
                   onClick={onClose}
                   className="cursor-pointer hover:bg-gray-200 rounded-full p-1 transition-all duration-200 ease-in-out"
-                ></div>
-                <CrossIcon />
+                >
+                  <CrossIcon />
+                </div>
               </div>
               <div>
                 <Input placeholder={"Title"} />
                 <Input placeholder={"Link"} />
               </div>
-              <div className="flex justify-center">
+              <div className="flex justify-center mt-4">
                 <Button variant="primary" text="Submit" />
-                {/* You can place the modal content here */}
               </div>
             </span>
           </div>
@@ -37,7 +40,7 @@ function Input({
   onChange,
   placeholder,
 }: {
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
 }) {
   return (
@@ -45,7 +48,7 @@ function Input({
       <input
         placeholder={placeholder}
         type="text"
-        className="px-4 py-2 border rounded w-full"
+        className="px-4 py-2 border rounded w-full my-2"
         onChange={onChange}
       />
     </div>
