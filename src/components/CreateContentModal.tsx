@@ -17,8 +17,10 @@ export function CreateContentModal({ open, onClose }) {
                 <Input placeholder={"Title"} />
                 <Input placeholder={"Link"} />
               </div>
-              <Button variant="primary" text="Submit" />
-              {/* You can place the modal content here */}
+              <div className="flex justify-center">
+                <Button variant="primary" text="Submit" />
+                {/* You can place the modal content here */}
+              </div>
             </span>
           </div>
         </div>
