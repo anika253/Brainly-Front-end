@@ -1,76 +1,44 @@
-import { useEffect } from "react";
 import { ShareIcon } from "./icons/ShareIcon";
 
 interface CardProps {
   link: string;
   type: "youtube" | "twitter";
+  title: string;
 }
 
-declare global {
-  interface Window {
-    twttr?: {
-      widgets: {
-        load: (el?: HTMLElement) => void;
-      };
-    };
-  }
-}
-
-export function Card({ link, type }: CardProps) {
-  useEffect(() => {
-    if (type === "twitter") {
-      const scriptId = "twitter-wjs";
-      const existingScript = document.getElementById(scriptId);
-
-      if (!existingScript) {
-        const script = document.createElement("script");
-        script.id = scriptId;
-        script.src = "https://platform.twitter.com/widgets.js";
-        script.async = true;
-        script.charset = "utf-8";
-        script.onload = () => {
-          window.twttr?.widgets.load();
-        };
-        document.body.appendChild(script);
-      } else {
-        window.twttr?.widgets.load();
-      }
-    }
-  }, [type, link]);
-
+export function Card({ link, type, title }: CardProps) {
   return (
-    <div>
-      <div className="p-8 bg-white rounded-md border-gray-200 max-w-72 border">
-        <div className="flex justify-between">
-          <div className="flex items-center text-md">
-            <div className="text-gray-500 pr-4">
-              <ShareIcon />
-            </div>
-            Project Ideas
-          </div>
-          <div className="flex items-center">
-            <div className="pr-2 text-gray-500">
-              <ShareIcon />
-              <ShareIcon />
-            </div>
-          </div>
-        </div>
+    <div className="bg-white border border-gray-200 rounded-md max-w-md w-full shadow-sm p-4">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-md font-semibold text-gray-800">{title}</h2>
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-500 hover:text-gray-700"
+        >
+          <ShareIcon />
+        </a>
       </div>
 
-      <div className="pt-4">
+      <div className="w-full">
         {type === "youtube" && (
-          <iframe
-            src={link.replace("watch?v=", "embed/")}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+          <div className="aspect-w-16 aspect-h-9">
+            <iframe
+              src={link.replace("watch?v=", "embed/")}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-60 rounded"
+            ></iframe>
+          </div>
         )}
+
         {type === "twitter" && (
-          <blockquote className="twitter-tweet">
-            <a href={link}></a>
+          <blockquote className="twitter-tweet w-full">
+            <a href={link.replace("x.com", "twitter.com")}></a>
           </blockquote>
         )}
       </div>
