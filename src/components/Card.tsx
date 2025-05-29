@@ -4,56 +4,30 @@ import { ShareIcon } from "./icons/ShareIcon";
 interface CardProps {
   link: string;
   type: "youtube" | "twitter";
+  title: string;
 }
 
-declare global {
-  interface Window {
-    twttr?: {
-      widgets: {
-        load: (el?: HTMLElement) => void;
-      };
-    };
-  }
-}
-
-export function Card({ link, type }: CardProps) {
-  useEffect(() => {
-    if (type === "twitter") {
-      const scriptId = "twitter-wjs";
-      const existingScript = document.getElementById(scriptId);
-
-      if (!existingScript) {
-        const script = document.createElement("script");
-        script.id = scriptId;
-        script.src = "https://platform.twitter.com/widgets.js";
-        script.async = true;
-        script.charset = "utf-8";
-        script.onload = () => {
-          window.twttr?.widgets.load();
-        };
-        document.body.appendChild(script);
-      } else {
-        window.twttr?.widgets.load();
-      }
-    }
-  }, [type, link]);
-
+export function Card({ link, type, title }: CardProps) {
   return (
     <div>
-      <div className="p-8 bg-white rounded-md border-gray-200 max-w-72 border">
+      <div className="p-4 bg-white rounded-md border-gray-200 max-w-72 border">
         <div className="flex justify-between">
           <div className="flex items-center text-md">
-            <div className="text-gray-500 pr-4">
+            <div className="text-gray-500 pr-2">
               <ShareIcon />
             </div>
-            Project Ideas
+            {title}
           </div>
           <div className="flex items-center">
             <div className="pr-2 text-gray-500">
-              <ShareIcon />
-              <ShareIcon />
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                <ShareIcon />
+              </a>
             </div>
           </div>
+        </div>
+        <div className="text-gray-500">
+          <ShareIcon />
         </div>
       </div>
 
