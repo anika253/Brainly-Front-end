@@ -1,22 +1,25 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-function Input({
-  onChange,
-  placeholder,
-}: {
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+interface InputProps {
   placeholder: string;
-}) {
-  return (
-    <div>
-      <input
-        placeholder={placeholder}
-        type="text"
-        className="px-4 py-2 border rounded w-full my-2"
-        onChange={onChange}
-      />
-    </div>
-  );
+  type?: any;
+
+  ref?: any;
 }
+
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ placeholder }, ref) => {
+    return (
+      <div>
+        <input
+          ref={ref}
+          placeholder={placeholder}
+          type="text"
+          className="px-4 py-2 border rounded w-full mb-4"
+        />
+      </div>
+    );
+  }
+);
 
 export default Input;
