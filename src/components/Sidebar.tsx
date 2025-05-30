@@ -8,7 +8,7 @@ export function Sidebar() {
     <aside className="fixed inset-y-0 left-0 w-72 bg-white border-r px-4 py-6">
       <h1 className="text-xl font-bold mb-6">Brainly</h1>
 
-      <nav className="space-y-3">
+      <nav className="space-y-3 pt-4 pl-4">
         {/* your SidebarItem components */}
         <SidebarItem text="Twitter" icon={<TwitterIcon />} />
         <SidebarItem text="YouTube" icon={<YouTubeIcon />} />
