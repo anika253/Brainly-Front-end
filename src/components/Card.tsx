@@ -1,5 +1,6 @@
 // components/Card.tsx
 import { ShareIcon } from "./icons/ShareIcon";
+import { useEffect } from "react";
 
 interface CardProps {
   link: string;
@@ -8,6 +9,22 @@ interface CardProps {
 }
 
 export function Card({ link, type, title }: CardProps) {
+  // Add this effect to handle messages from iframe
+  useEffect(() => {
+    const messageHandler = (event: MessageEvent) => {
+      // Add origin checks for security
+      if (event.origin.includes("youtube.com")) {
+        // You can optionally respond to the message here
+        // event.source.postMessage('response', event.origin);
+      }
+    };
+
+    window.addEventListener("message", messageHandler);
+    return () => {
+      window.removeEventListener("message", messageHandler);
+    };
+  }, []);
+
   return (
     <article className="w-full max-w-md bg-white rounded-lg border border-gray-200 shadow">
       <header className="p-4 flex justify-between items-center border-b">
@@ -24,6 +41,9 @@ export function Card({ link, type, title }: CardProps) {
               src={link.replace("watch?v=", "embed/")}
               className="w-full h-full rounded"
               allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              // Add sandbox for security
+              sandbox="allow-same-origin allow-scripts allow-popups"
             />
           </div>
         )}
