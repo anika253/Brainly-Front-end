@@ -6,6 +6,7 @@ import { Button } from "../components/Button";
 import { PlusIcon } from "../components/icons/PlusIcon";
 import { ShareIcon } from "../components/icons/ShareIcon";
 import { CreateContentModal } from "../components/CreateContentModal";
+import { useContent } from "../components/hooks/useContent";
 
 function Dashboard() {
   /* ---------------- Twitter embed script (load once) ------------- */
@@ -21,6 +22,7 @@ function Dashboard() {
 
   /* ---------------- Modal state ---------------- */
   const [modalOpen, setModalOpen] = useState(false);
+  const contents = useContent();
 
   /* ---------------- UI ---------------- */
   return (
@@ -51,17 +53,10 @@ function Dashboard() {
         </div>
 
         {/* ----- Cards ----- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card
-            title="First Tweet"
-            type="twitter"
-            link="https://twitter.com/kirat_tw/status/1633685473821425666"
-          />
-          <Card
-            title="First YouTube Video"
-            type="youtube"
-            link="https://www.youtube.com/watch?v=9bZkp7q19f0"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-gap-4">
+          {contents.map(({ type, link, title }, index) => (
+            <Card key={index} type={type} link={link} title={title} />
+          ))}
         </div>
       </main>
     </div>
