@@ -53,7 +53,7 @@ function Dashboard() {
         </div>
 
         {/* ----- Cards ----- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 flex-gap-4 flex-wrap">
           {contents.map(({ type, link, title }, index) => (
             <Card key={index} type={type} link={link} title={title} />
           ))}
