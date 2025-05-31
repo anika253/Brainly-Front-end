@@ -1,6 +1,6 @@
 import { CrossIcon } from "./icons/CrossIcon";
 import { Button } from "./Button";
-import Input from "./Input";
+import { Input } from "./Input";
 
 interface CreateContentModalProps {
   open: boolean;
